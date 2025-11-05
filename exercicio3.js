@@ -1,29 +1,23 @@
 function unfold(seed, f) {
     if (seed > 50) {
-        return []
+        return [];
     }
     return [seed].concat(unfold(f(seed), f));
 }
 
-let d = s => s + 1
+let d = s => s + 1;
 
 function paresElemento() {
     const sementeInicial = 1; 
-
     const sequencia = unfold(sementeInicial, d);
 
     const ul = document.createElement('ul');
 
-    sequencia.filter((pares)=>{
-      if(pares % 2 == 0){
-       return pares
-      }
-
-    }).forEach(pares => {
-       const li = document.createElement('li');
-        li.textContent = pares;
+    sequencia.filter(num => num % 2 === 0).forEach(num => {
+        const li = document.createElement('li');
+        li.textContent = num;
         ul.appendChild(li);
-    });
+      });
 
     document.body.appendChild(ul);
 }
